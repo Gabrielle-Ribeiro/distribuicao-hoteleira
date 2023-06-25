@@ -1,81 +1,127 @@
 (define (domain hotel)
-    (:requirements :typing :negative-preconditions)
+    (:requirements :typing :negative-preconditions :disjunctive-preconditions :equality)
     
-    (:types person room)
+    (:types person room couple)
 
-    (:functions (total-cost))
+    (:functions (total-cost)
+                (price ?room - room)
+    )
     
-    (:predicates (available-double-room ?doubleRoom - room)
-                 (available-triple-room ?tripleRoom - room)
-                 (available-quadruple-room ?quadrupleRoom - room)
+    (:predicates (double-room ?doubleRoom - room)
+                 (triple-room ?tripleRoom - room)
+                 (quadruple-room ?quadrupleRoom - room)
+                 (couple-room ?coupleRoom - room)
                  (allocated ?person - person)
+                 (allocated-couple ?couple - couple)
+                 (is-available ?room - room)
     )
 
     (:action allocate-one-person
         :parameters (?person - person ?room - room)
         :precondition (and (not (allocated ?person))
-                           (available-double-room ?room)
+                           (or (double-room ?room)
+                               (triple-room ?room)
+                               (quadruple-room ?room)
+                               (couple-room ?room)
+                           )
+                           (is-available ?room)
         )
         :effect (and (allocated ?person)
-                     (increase (total-cost) 1))
+                     (not (is-available ?room))
+                     (increase (total-cost) (price ?room)))
     )
 
-    (:action allocate-double-room
+    (:action allocate-two-people
         :parameters (?person1 - person 
                      ?person2 - person 
-                     ?doubleRoom - room
+                     ?room - room
         )
         :precondition (and (not (allocated ?person1))
                            (not (allocated ?person2))
-                           (available-double-room ?doubleRoom)
+                           (not (= ?person1 ?person2))
+                           (or (double-room ?room)
+                               (triple-room ?room)
+                               (quadruple-room ?room)
+                           )
+                           (is-available ?room)                  
         )
         :effect (and (allocated ?person1)
                      (allocated ?person2)
-                     (not (available-double-room ?doubleRoom))
-                     (increase (total-cost) 1)
+                     (not (is-available ?room))
+                     (increase (total-cost) (price ?room))
         )
     )
     
-    (:action allocate-triple-room
+    (:action allocate-three-people
         :parameters (?person1 - person 
                      ?person2 - person 
                      ?person3 - person
-                     ?tripleRoom - room
+                     ?room - room
         )
         :precondition (and (not (allocated ?person1))
                            (not (allocated ?person2))
                            (not (allocated ?person3))
-                           (available-triple-room ?tripleRoom)
+                           (not (= ?person1 ?person2))
+                           (not (= ?person1 ?person3))
+                           (not (= ?person2 ?person3))
+                           (or (triple-room ?room)
+                               (quadruple-room ?room)
+                           )
+                           (is-available ?room)
         )
         :effect (and (allocated ?person1)
                      (allocated ?person2)
                      (allocated ?person3)
-                     (not (available-triple-room ?tripleRoom))
-                     (increase (total-cost) 1)
+                     (not (is-available ?room))
+                     (increase (total-cost) (price ?room))
         )
     )
 
-    (:action allocate-quadruple-room
+    (:action allocate-four-people
         :parameters (?person1 - person 
                      ?person2 - person 
                      ?person3 - person
                      ?person4 - person
-                     ?quadrupleRoom - room
+                     ?room - room
         )
         :precondition (and (not (allocated ?person1))
                            (not (allocated ?person2))
                            (not (allocated ?person3))
                            (not (allocated ?person4))
-                           (available-quadruple-room ?quadrupleRoom)
+                           (not (= ?person1 ?person2))
+                           (not (= ?person1 ?person3))
+                           (not (= ?person1 ?person4))
+                           (not (= ?person2 ?person3))
+                           (not (= ?person2 ?person4))
+                           (not (= ?person3 ?person4))
+                           (quadruple-room ?room)
+                           (is-available ?room)
         )
         :effect (and (allocated ?person1)
                      (allocated ?person2)
                      (allocated ?person3)
                      (allocated ?person4)
-                     (not (available-quadruple-room ?quadrupleRoom))
-                     (increase (total-cost) 1)
+                     (not (is-available ?room))
+                     (increase (total-cost) (price ?room))
         )
     )
-    
-        
+
+    (:action allocate-couple
+        :parameters (?couple - couple 
+                     ?room - room
+        )
+        :precondition (and (not (allocated-couple ?couple))
+                           (or (double-room ?room)
+                               (triple-room ?room)
+                               (quadruple-room ?room)
+                               (couple-room ?room)
+                           )
+                           (is-available ?room)
+
+        )
+        :effect (and (allocated-couple ?couple)
+                     (not (is-available ?room))
+                     (increase (total-cost) (price ?room))
+        )
+    )    
 )
