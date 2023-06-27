@@ -1,0 +1,25 @@
+16
+T 517
+Q 79
+T 672
+D 500
+D 826
+D 350
+Q 115
+D 946
+D 61
+D 849
+T 818
+T 907
+Q 871
+Q 514
+T 629
+C 770
+4 M
+Davi Isaac Joao Vicente 
+2 F
+Clara Fernanda 
+3 C
+Davi Joao
+Vicente Clara
+Isaac Fernanda

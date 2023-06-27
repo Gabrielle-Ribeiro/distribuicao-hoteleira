@@ -1,0 +1,23 @@
+14
+T 344
+T 626
+D 317
+C 878
+D 498
+T 573
+C 998
+Q 61
+C 615
+Q 324
+T 162
+T 317
+Q 720
+T 469
+5 M
+Joao Lorenzo Igor Vicente Gabriel 
+5 F
+Lavinia Ana Stella Giovanna Nicole 
+3 C
+Gabriel Igor
+Stella Vicente
+Lavinia Joao

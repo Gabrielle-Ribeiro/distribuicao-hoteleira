@@ -1,0 +1,26 @@
+15
+T 234
+Q 343
+C 586
+D 632
+D 68
+D 822
+C 470
+Q 343
+Q 948
+C 932
+T 769
+Q 285
+C 524
+C 648
+Q 653
+8 M
+Thales Otavio Joao Thiago Andre Vitor Erick Luigi 
+4 F
+Lavinia Livia Sophie Catarina 
+5 C
+Erick Sophie
+Andre Lavinia
+Livia Otavio
+Thales Thiago
+Vitor Catarina

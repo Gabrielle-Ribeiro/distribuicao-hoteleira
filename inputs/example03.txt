@@ -1,0 +1,14 @@
+7
+D 921
+T 560
+C 310
+D 543
+Q 969
+D 119
+C 725
+2 M
+Lorenzo Andre 
+3 F
+Eloah Esther Maysa 
+1 C
+Esther Eloah

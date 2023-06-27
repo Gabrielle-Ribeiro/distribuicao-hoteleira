@@ -1,0 +1,21 @@
+13
+D 266
+Q 356
+Q 71
+Q 738
+T 720
+Q 419
+T 138
+T 653
+C 582
+C 256
+T 358
+Q 644
+C 634
+3 M
+Gabriel Leonardo Joao 
+3 F
+Sabrina Helena Ana 
+2 C
+Helena Joao
+Sabrina Leonardo

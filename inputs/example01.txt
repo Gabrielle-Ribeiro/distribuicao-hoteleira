@@ -1,0 +1,15 @@
+8
+C 655
+Q 102
+Q 187
+D 942
+C 647
+Q 125
+T 782
+T 411
+3 M
+Vinicius Nathan Thiago 
+2 F
+Stephany Stella 
+1 C
+Stella Thiago
