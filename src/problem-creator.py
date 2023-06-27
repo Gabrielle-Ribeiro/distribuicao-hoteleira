@@ -48,10 +48,13 @@ with open('src/problem.pddl', 'w') as file:
     for male in males:
         if not male in couples:
             file.write(f'           (not (allocated {male}))\n')
+            file.write(f'           (male {male})\n')
 
     for female in females:
         if not female in couples:
             file.write(f'           (not (allocated {female}))\n')
+            file.write(f'           (female {female})\n')
+
 
     for i in range(0, len(couples), 2):
         file.write(f'           (not (allocated-couple {couples[i]}&{couples[i+1]}))\n')
@@ -71,8 +74,8 @@ with open('src/problem.pddl', 'w') as file:
     file.write('           (= (total-cost) 0)\n    )\n') 
     
     file.write('    (:goal\n')
-    file.write('      (and (forall (?person - person)(and (allocated ?person)))\n')
-    file.write('           (forall (?couple - couple)(and (allocated-couple ?couple)))\n')
+    file.write('      (and (forall (?person - person) (and(allocated ?person)))\n')
+    file.write('           (forall (?couple - couple) (and(allocated-couple ?couple)))\n')
     file.write('      )\n')
     file.write('    )\n')
 
